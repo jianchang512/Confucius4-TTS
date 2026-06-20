@@ -17,6 +17,9 @@ except:
     os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
     print(f'无法连接 huggingface.co, 使用国内镜像 hf-mirror.com 下载模型')
     
+DEFAULT_TEXT = "网易Confucius4-TTS 多语言跨语种TTS"
+print(DEFAULT_TEXT)
+
 import gradio as gr
 import torch
 import torchaudio
@@ -24,11 +27,10 @@ sys.path.insert(0, ROOT_DIR)
 from confuciustts.cli.inference import ConfuciusTTS
 
 
-DEFAULT_TEXT = "网易Confucius4-TTS 多语言跨语种TTS"
 
 LANGUAGE_CHOICES = [
     "zh", "en", "ja", "ko", "de", "fr", "th", 
-    "id", "vi", "es", "pt", "it", "ru", "ms"
+    "id", "vi", "es", "pt", "it", "ru", "ms","Auto"
 ]
 
 # 1. 全局初始化模型
@@ -52,6 +54,7 @@ def synthesize_audio(ref_aud, text, lang):
         raise gr.Error("请输入要合成的文本 (Please enter text to synthesize).")
         
     print(f"Generating TTS | Lang: {lang} | Text: {text}")
+    lang="zh" if lang=='Auto' else lang
     t0 = time.time()
     
     # generate() 方法接收的是文件的路径字符串 (Gradio 设置了 type="filepath")
@@ -97,4 +100,4 @@ with gr.Blocks(title="Confucius4-TTS", theme=gr.themes.Soft()) as demo:
 
 if __name__ == "__main__":
     # 启动 Gradio 服务
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    demo.launch(server_name="0.0.0.0", server_port=7860,share=False)
