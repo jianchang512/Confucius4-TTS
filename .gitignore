@@ -1,0 +1,6 @@
+*.exe
+*.7z
+*.zip
+checkpoints/
+tools/
+runtime/
