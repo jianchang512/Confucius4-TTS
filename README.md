@@ -1,113 +1,92 @@
 <div align="center">
     <img src="./resources/Confucius4-TTS.png" alt="Confucius4-TTS" width="35%">
-    <h1>Confucius4-TTS: a Multilingual and Cross-Lingual Zero-Shot TTS Engine</h1>
-    <p><b>One voice. Any language.</b></p>
+    <h1>Confucius4-TTS: 多语种跨语种零样本TTS</h1>
+    <p><b>一种音色，任意语言。</b></p>
 </div>
 
 <div align="center">
-    <a href="./README.zh.md"><img src="https://img.shields.io/badge/README-中文版本-red"></a>
+    <a href="./README.md"><img src="https://img.shields.io/badge/README-EN-red"></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a href="./LICENSE"><img src="https://img.shields.io/badge/code_license-Apache%202.0-blue"></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://confucius4-tts.youdao.com/gradio"><img src="https://img.shields.io/badge/Demo-在线体验-orange"></a>
+    <a href="https://confucius4-tts.youdao.com/gradio"><img src="https://img.shields.io/badge/Demo-在线体验-purple"></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://2901733926.github.io/Confucius4-TTS/"><img src="https://img.shields.io/badge/GitHub.io-Demo_Page-blue?logo=GitHub&style=flat-square"></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://huggingface.co/netease-youdao/Confucius4-TTS"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Confucius4TTS-yellow"></a>
+    <a href="https://huggingface.co/netease-youdao/Confucius4-TTS"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow"></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://modelscope.cn/models/netease-youdao/Confucius4-TTS"><img src="https://img.shields.io/badge/ModelScope-Confucius4TTS-purple"></a>
+    <a href="https://modelscope.cn/models/netease-youdao/Confucius4-TTS"><img src="https://img.shields.io/badge/ModelScope-Model-blue"></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 <br>
+Confucius4-TTS 是一款基于大语言模型（LLM）的先进文本转语音（TTS）系统，专为多语种和跨语种语音合成而设计。基于语音编码器 + 大语言模型（LLM）架构构建，能够在保持说话人音色一致的同时，实现跨语种的高质量语音生成。
+在线 Demo 页面体验：[https://confucius4-tts.youdao.com/gradio]
 
-Confucius4-TTS is an advanced LLM-based text-to-speech (TTS) system designed for multilingual and cross-lingual speech synthesis. Built on a speech encoder + large language model (LLM) architecture, Confucius4-TTS enables high-quality speech generation while preserving speaker identity across languages. You can try our online demo at **[https://confucius4-tts.youdao.com/gradio](https://confucius4-tts.youdao.com/gradio)**.
 
-**✨ Key Features**
+> **在官方源码基础上增加了一个WebUI界面`webui.py`，其他未有任何改变**
 
-- **14 Languages Supported**: Chinese, English, Japanese, Korean, German, French, Spanish, Indonesian, Italian, Thai, Portuguese, Russian, Malay and Vietnamese *(more coming soon)*
-- **Unconstrained Voice Cloning**: No reference transcript required
-- **Cross-Lingual Voice Transfer**: Unaccented speech synthesis across 14 languages
-- **Zero-Shot Voice Transfer**: Clone voices without additional training
-- **Seamless Emotion Transfer**: Clone the feeling, not just the voice
-- **Robust Generalization**: Stable performance in real-world multilingual scenarios
+**✨ 核心特性**
 
-With strong cross-lingual generalization, Confucius4-TTS allows users to seamlessly switch languages while keeping the same voice, delivering fluent, natural, and expressive speech.
+- **支持 14 种语言**：中文、英文、日语、韩语、德语、法语、西班牙语、印尼语、意大利语、泰语、葡萄牙语、俄语、马来语、越南语 *（更多语言即将推出）*
+- **无约束声音克隆**：无需参考文本
+- **跨语种声音迁移**：跨 14 种语言的无口音语音合成
+- **零样本声音迁移**：无需额外训练即可克隆声音
+- **无缝情感迁移**：克隆情感，而非仅仅是声音
+- **强泛化能力**：在真实多语种场景中表现稳定
 
-<div align="center">
-
-Video Demo
-
-<table border="0">
-  <tr>
-    <td>
-      <video src="https://github.com/user-attachments/assets/2e2a4fc2-c8ef-4f12-89f7-55a6221200f1" controls width="100%"></video>
-    </td>
-    <td>
-      <video src="https://github.com/user-attachments/assets/dacd356d-3bf5-4b06-9a2c-6ad5c24eb035" controls width="100%"></video>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <video src="https://github.com/user-attachments/assets/e00ae5e1-fbb0-4137-af13-dd53599196a5" controls width="100%"></video>
-    </td>
-    <td>
-      <video src="https://github.com/user-attachments/assets/f6c1aabb-4258-40ba-b945-81c3eeed67c3" controls width="100%"></video>
-    </td>
-  </tr>
-</table>
-</div>
+凭借强大的跨语种泛化能力，Confucius4-TTS 允许用户在保持相同音色的同时无缝切换语言，提供流畅、自然且富有表现力的语音。
 
 ## Contents
 
-- [Installation](#-installation)
-- [Inference](#-inference)
-- [Training](#-training)
-- [Performance](#-performance)
-- [Citation](#citation)
+- [环境安装](#-环境安装)
+- [推理](#-推理)
+- [训练](#-训练)
+- [性能](#-性能)
+- [引用](#引用)
 
-## 🛠 Installation
+## 🛠 环境安装
 
-### Requirements
+### 环境要求
 
 - Python 3.10
 - CUDA 12.6
 
-### Setup
+### 安装步骤
 
-1. Clone the repository:
+1. 克隆仓库：
 
 ```bash
 git clone https://github.com/netease-youdao/Confucius4-TTS.git
 cd Confucius4-TTS
 ```
 
-2. Create and activate a conda environment:
+2. 创建并激活 conda 环境：
 
 ```bash
 conda create -n confuciustts python=3.10 -y
 conda activate confuciustts
 ```
 
-3. Install dependencies:
+3. 安装依赖：
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 🚀 Inference
+## 🚀 推理
 
-Use the provided `example.py` script for zero-shot TTS synthesis:
+使用提供的 `example.py` 脚本进行zero-shot TTS 合成：
 
 ```bash
 python example.py \
     --prompt_wav path/to/reference.wav \
-    --text "Hello, this is a test of zero-shot voice cloning." \
-    --lang en \
+    --text "要合成的文本" \
+    --lang zh \
     --out output.wav \
     --config config/inference_config.yaml
 ```
 
-You can also use the Python API directly:
+也可以直接使用 Python API：
 
 ```python
 import torch
@@ -120,8 +99,8 @@ model = ConfuciusTTS(
 )
 
 audio = model.generate(
-    text="Hello, welcome to Confucius4-TTS.",
-    lang="en",
+    text="你好，欢迎使用 Confucius4-TTS。",
+    lang="zh",
     prompt_wav="path/to/reference.wav",
     verbose=True,
 )
@@ -129,57 +108,57 @@ audio = model.generate(
 torchaudio.save("output.wav", audio.cpu(), model.sample_rate)
 ```
 
-## 🚀 Fine-Tuning
+## 🚀 微调
 
-Confucius4-TTS follows a "speech encoder + LLM" architecture. The training pipeline covers two modules:
-- **Text2Semantic (T2S)**: generates semantic token sequences from text and speaker conditioning.
-- **Semantic2Acoustic (S2A)**: a flow-matching model that converts semantic tokens into mel spectrograms.
+Confucius4-TTS 采用「语音编码器 + LLM」架构，训练流程涵盖以下两个模块：
+- **Text2Semantic（T2S）**：根据文本与说话人条件生成语义 token 序列。
+- **Semantic2Acoustic（S2A）**：流匹配模型，将语义 token 转换为梅尔频谱图。
 
-### 1. Prepare Pretrained Models
+### 1. 准备预训练模型
 
-Download the two external models:
+下载两个外部模型：
 
 ```bash
-# Wav2Vec2-BERT (speaker conditioning & semantic feature extraction)
+# Wav2Vec2-BERT（说话人条件化 & 语义特征提取）
 huggingface-cli download facebook/w2v-bert-2.0 \
     --local-dir pretrained/w2v-bert-2.0
 
-# Amphion MaskGCT (semantic codec implementation)
+# Amphion MaskGCT（语义编解码器实现）
 git clone https://github.com/open-mmlab/Amphion.git external/Amphion
 ```
 
-After downloading, your directory should look like:
+下载完成后，目录结构如下：
 
 ```
 checkpoints/
-├── t2s_model.safetensors        # pretrained T2S weights
-├── s2a_model.pt                 # pretrained S2A weights
-├── wav2vec2bert_stats.pt        # semantic feature normalization statistics
-├── special_tokens_map.json      # tokenizer files
+├── t2s_model.safetensors        # T2S 预训练权重
+├── s2a_model.pt                 # S2A 预训练权重
+├── wav2vec2bert_stats.pt        # 语义特征归一化统计量
+├── special_tokens_map.json      # 分词器文件
 ├── tokenizer.json
 ├── tokenizer.model
 └── tokenizer_config.json
 pretrained/
-├── w2v-bert-2.0/                # Wav2Vec2-BERT model
+├── w2v-bert-2.0/                # Wav2Vec2-BERT 模型
 └── campplus/
-    └── campplus_cn_common.bin   # CAMPPlus speaker encoder checkpoint
+    └── campplus_cn_common.bin   # CAMPPlus 说话人编码器权重
 external/
-└── Amphion/                     # MaskGCT semantic codec implementation
+└── Amphion/                     # MaskGCT 语义编解码器实现
 ```
 
-### 2. Prepare Training Data
+### 2. 准备训练数据
 
-Training data is provided as **TSV files** (tab-separated, no header) with the following 5 columns:
+训练数据为 **TSV 文件**（制表符分隔），不含表头，包含以下 5 列：
 
-| Column | Description |
+| 列名 | 说明 |
 |---|---|
-| `lang` | Language code (e.g. `zh`, `en`, `ja`) |
-| `wav_path` | Path to the target audio |
-| `norm_text` | Normalized text |
-| `semantic_ids_path` | Pre-extracted semantic tokens (`.npy` file path) |
-| `ref_audio_paths` | Reference audio path(s), comma-separated for multiple |
+| `lang` | 语言代码（如 `zh`、`en`、`ja`） |
+| `wav_path` | 目标音频路径 |
+| `norm_text` | 归一化后的文本 |
+| `semantic_ids_path` | 预提取的语义 token（`.npy` 文件路径） |
+| `ref_audio_paths` | 参考音频路径，支持多个用逗号分隔 |
 
-Configure the train/validation paths in `config/train_t2s.yaml`:
+在 `config/train_t2s.yaml` 中配置训练/验证集路径：
 
 ```yaml
 data:
@@ -189,49 +168,49 @@ data:
     - data/val.tsv
 ```
 
-### 3. Launch T2S Training
+### 3. 启动 T2S 训练
 
-Set the pretrained T2S checkpoint path in `config/train_t2s.yaml`:
+在 `config/train_t2s.yaml` 中设置预训练 T2S 权重路径：
 
 ```yaml
 paths:
   t2s_checkpoint: checkpoints/t2s_model.safetensors
 ```
 
-**Single-node training:**
+**单机训练：**
 
 ```bash
 python -m confuciustts.cli.train_t2s -c config/train_t2s.yaml
 ```
 
-### 4. Launch S2A Training
+### 4. 启动 S2A 训练
 
-Set the checkpoint paths in `config/train_s2a.yaml`. `t2s_checkpoint` points to the frozen T2S backbone; `s2a_checkpoint` is optional and can be used to resume from a pretrained S2A model:
+在 `config/train_s2a.yaml` 中设置权重路径。`t2s_checkpoint` 指向冻结的 T2S 骨干网络；`s2a_checkpoint` 为可选项，用于从预训练 S2A 模型继续训练：
 
 ```yaml
 paths:
   t2s_checkpoint: checkpoints/t2s_model.safetensors
-  s2a_checkpoint: checkpoints/s2a_model.pt   # optional: resume from pretrained S2A
+  s2a_checkpoint: checkpoints/s2a_model.pt   # 可选：从预训练 S2A 权重继续训练
 ```
 
-**Single-node training:**
+**单机训练：**
 
 ```bash
 python -m confuciustts.cli.train_s2a -c config/train_s2a.yaml
 ```
 
-During S2A training, the T2S model, speaker encoder (Wav2Vec2-BERT), and style encoder (CAMPPlus) are all frozen. Only the flow-matching S2A model is trained.
+S2A 训练过程中，T2S 模型、说话人编码器（Wav2Vec2-BERT）和风格编码器（CAMPPlus）均处于冻结状态，只有流匹配 S2A 模型参与训练。
 
-## 📊 Performance
+## 📊 性能
 
-Confucius4-TTS achieves competitive results on multilingual and cross-lingual zero-shot TTS benchmarks, with strong intelligibility and speaker similarity across multiple languages.
+Confucius4-TTS 在多语种及跨语种零样本 TTS 基准测试中表现优异，兼具高可懂度与说话人相似度。
 
-> Lower is better for WER/CER (↓), and higher is better for SIM (↑).
+> WER/CER 越低越好（↓），SIM 越高越好（↑）。
 
-### CV3-eval Cross-lingual
+### CV3-eval 跨语种
 
 <details>
-<summary><b>CV3-eval Cross-lingual Results (click to expand)</b></summary>
+<summary><b>CV3-eval 跨语种结果（点击展开）</b></summary>
 
 | Direction | Metric | Confucius4-TTS | F5-TTS† | Spark-TTS | CosyVoice2† | CosyVoice3-0.5B† | CosyVoice3-0.5B + DiffRO† | CosyVoice3-1.5B† | CosyVoice3-1.5B + DiffRO† |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -242,14 +221,14 @@ Confucius4-TTS achieves competitive results on multilingual and cross-lingual ze
 | ja→en | WER↓ | **3.44** | – | – | 11.20 | 5.86 | 4.78 | 5.94 | 4.19 |
 | ko→en | WER↓ | **3.42** | – | – | 13.10 | 18.30 | 7.91 | 13.70 | 7.08 |
 
-† Requires reference text.
+† 需要参考文本。
 
 </details>
 
 ### X-Voice Benchmark
 
 <details>
-<summary><b>X-Voice Cross-lingual Results (click to expand)</b></summary>
+<summary><b>X-Voice 跨语种结果（点击展开）</b></summary>
 
 | Direction | Metric | Confucius4-TTS | X-Voice | OmniVoice† | IndexTTS2 |
 |---|---|---:|---:|---:|---:|
@@ -268,14 +247,14 @@ Confucius4-TTS achieves competitive results on multilingual and cross-lingual ze
 | vi→zh | WER↓ | **2.75** | 2.78 | 10.51 | 2.98 |
 |  | SIM↑ | 0.640 | 0.641 | **0.701** | 0.641 |
 
-† Requires reference text.
+† 需要参考文本。
 
 </details>
 
 ### Seed-TTS-eval
 
 <details>
-<summary><b>Seed-TTS-eval English & Chinese Zero-shot Results (click to expand)</b></summary>
+<summary><b>Seed-TTS-eval 中英文测试集结果（点击展开）</b></summary>
 
 | Language | Metric | Confucius4-TTS | Qwen3-TTS | FishAudio S2† | OmniVoice† | VoxCPM2† | X-Voice |
 |---|---|---:|---:|---:|---:|---:|---:|
@@ -284,14 +263,14 @@ Confucius4-TTS achieves competitive results on multilingual and cross-lingual ze
 | Chinese | CER↓ | 0.94 | 0.77 | **0.54** | 0.84 | 0.97 | 1.47 |
 |  | SIM↑ | 0.765 | 0.770 | – | 0.777 | **0.795** | 0.746 |
 
-† Requires reference text.
+† 需要参考文本。
 
 </details>
 
 ### MiniMax-Multilingual-Test
 
 <details>
-<summary><b>MiniMax-Multilingual-Test Results (click to expand)</b></summary>
+<summary><b>MiniMax-Multilingual-Test 结果（点击展开）</b></summary>
 
 | Language | Metric | Confucius4-TTS | ElevenLab | Qwen3-TTS | FishAudio S2† | OmniVoice† | VoxCPM2† | X-Voice |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -318,28 +297,28 @@ Confucius4-TTS achieves competitive results on multilingual and cross-lingual ze
 | Russian | WER↓ | 4.64 | 3.88 | 3.21 | 2.40 | **2.23** | 3.63 | 6.49 |
 |  | SIM↑ | 0.787 | 0.675 | 0.784 | 0.790 | 0.783 | **0.811** | 0.799 |
 
-† Requires reference text.
+† 需要参考文本。
 
 </details>
 
 ---
 
-## Acknowledgements
+## 致谢
 
-Confucius4-TTS builds on the following open-source projects:
+Confucius4-TTS 基于以下开源项目构建：
 
-- **[Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS)** — Speaker encoder (ECAPA-TDNN) and text embedding projector architectures
-- **[CosyVoice](https://github.com/FunAudioLLM/CosyVoice)** — Text normalization pipeline
-- **[Amphion / MaskGCT](https://github.com/open-mmlab/Amphion)** — Semantic codec implementation
-- **[w2v-BERT 2.0](https://huggingface.co/facebook/w2v-bert-2.0)** — Semantic feature extraction and speaker conditioning
-- **[Seed-VC](https://github.com/Plachtaa/seed-vc)** — Flow matching architecture reference
-- **[BigVGAN](https://github.com/NVIDIA/BigVGAN)** — High-fidelity neural vocoder for mel-spectrogram to waveform synthesis
+- **[Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS)** — 说话人编码器（ECAPA-TDNN）及文本嵌入投影层架构
+- **[CosyVoice](https://github.com/FunAudioLLM/CosyVoice)** — 文本归一化流程
+- **[Amphion / MaskGCT](https://github.com/open-mmlab/Amphion)** — 语义编解码器实现
+- **[w2v-BERT 2.0](https://huggingface.co/facebook/w2v-bert-2.0)** — 语义特征提取与说话人条件化
+- **[Seed-VC](https://github.com/Plachtaa/seed-vc)** — Flow matching 架构参考
+- **[BigVGAN](https://github.com/NVIDIA/BigVGAN)** — 高保真神经声码器，用于梅尔频谱图到波形的合成
 
 ---
 
-## Citation
+## 引用
 
-If you find Confucius4-TTS useful in your research or project, please consider citing:
+如果您在研究或项目中使用了 Confucius4-TTS，请考虑引用：
 
 ```bibtex
 @misc{confucius4tts_2026,
