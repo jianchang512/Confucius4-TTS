@@ -1,6 +1,7 @@
 import sys
-import time,os,requests
+import time,os
 import tempfile
+import argparse
 from pathlib import Path
 
 ROOT_DIR=str(Path(__file__).parent.as_posix())
@@ -10,17 +11,25 @@ os.environ['HF_HUB_DISABLE_SYMLINKS_WARNING'] = 'true'
 os.environ['HF_HUB_DOWNLOAD_TIMEOUT'] = "3600"
 os.environ["HF_HUB_DISABLE_XET"] = "1"
 os.environ['PATH'] = ROOT_DIR + os.pathsep + f'{ROOT_DIR}/tools'
+os.environ['NO_PROXY']='localhost,127.0.0.1,api.gradio.app'
+os.environ['GRADIO_ANALYTICS_ENABLED']='0'
 
+import requests
 try:
     requests.head('https://huggingface.co', timeout=5)
 except:
     os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
-    print(f'无法连接 huggingface.co, 使用国内镜像 hf-mirror.com 下载模型')
+    print(f'\n\t无法连接 huggingface.co, 将使用国内镜像 hf-mirror.com 下载模型\n')
     
-DEFAULT_TEXT = "网易Confucius4-TTS 多语言跨语种TTS"
+DEFAULT_TEXT = "网易Confucius4-TTS"
 print(DEFAULT_TEXT)
-
-import gradio as gr
+print("加载模型中，请耐心等待，第一次启动将自动下载模型...")
+try:
+    import gradio as gr
+except ImportError:
+    print('缺失 gardio 模块，请执行 pip install gradio  安装')
+    sys.exit(1)
+    
 import torch
 import torchaudio
 sys.path.insert(0, ROOT_DIR)
@@ -34,7 +43,7 @@ LANGUAGE_CHOICES = [
 ]
 
 # 1. 全局初始化模型
-print("Initializing ConfuciusTTS model...")
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = ConfuciusTTS(
     config_path='config/inference_config.yaml',
@@ -100,4 +109,9 @@ with gr.Blocks(title="Confucius4-TTS", theme=gr.themes.Soft()) as demo:
 
 if __name__ == "__main__":
     # 启动 Gradio 服务
-    demo.launch(server_name="0.0.0.0", server_port=7860,share=False)
+    parser = argparse.ArgumentParser(description="ConfuciusTTS zero-shot synthesis")
+    parser.add_argument(
+        "--share", action="store_true", default=False, help="Create public link."
+    )
+    args = parser.parse_args()
+    demo.launch(server_name="127.0.0.1", server_port=7860,share=args.share)
