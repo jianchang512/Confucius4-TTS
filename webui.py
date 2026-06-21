@@ -14,6 +14,8 @@ os.environ['PATH'] = ROOT_DIR + os.pathsep + f'{ROOT_DIR}/tools'
 os.environ['NO_PROXY']='localhost,127.0.0.1,api.gradio.app'
 os.environ['GRADIO_ANALYTICS_ENABLED']='0'
 
+os.makedirs(ROOT_DIR + "/checkpoints", exist_ok=True)
+
 import requests
 try:
     requests.head('https://huggingface.co', timeout=5)
