@@ -2,6 +2,8 @@
 >
 > **在官方源码基础上增加了一个WebUI界面`webui.py`，其他未有任何改变**
 >
+> [在 google colab 上使用](https://colab.research.google.com/drive/1a1EN_5uKyaTiKJNkiKEYxbbK3VXeJl9a?usp=sharing)
+>
 
 <div align="center">
     <img src="./resources/Confucius4-TTS.png" alt="Confucius4-TTS" width="35%">
