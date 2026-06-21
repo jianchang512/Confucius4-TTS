@@ -1,6 +1,7 @@
 *.exe
 *.7z
 *.zip
+.gradio/
 checkpoints/
 tools/
 runtime/
