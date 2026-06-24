@@ -1,6 +1,7 @@
 *.exe
 *.7z
 *.zip
+*.wav
 .gradio/
 tools/
 runtime/

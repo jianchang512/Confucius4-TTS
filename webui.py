@@ -5,11 +5,10 @@ import argparse
 from pathlib import Path
 
 ROOT_DIR=str(Path(__file__).parent.as_posix())
-os.environ['HF_HOME'] = ROOT_DIR + "/checkpoints"
-os.environ['HF_HUB_CACHE'] = ROOT_DIR + "/checkpoints"
+#os.environ['HF_HOME'] = ROOT_DIR + "/checkpoints"
+#os.environ['HF_HUB_CACHE'] = ROOT_DIR + "/checkpoints"
 os.environ['HF_HUB_DISABLE_SYMLINKS_WARNING'] = 'true'
 os.environ['HF_HUB_DOWNLOAD_TIMEOUT'] = "3600"
-os.environ["HF_HUB_DISABLE_XET"] = "1"
 os.environ['PATH'] = ROOT_DIR + os.pathsep + f'{ROOT_DIR}/tools'
 os.environ['NO_PROXY']='localhost,127.0.0.1,api.gradio.app'
 os.environ['GRADIO_ANALYTICS_ENABLED']='0'
@@ -22,10 +21,19 @@ try:
 except:
     os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
     print(f'\n\t无法连接 huggingface.co, 将使用国内镜像 hf-mirror.com 下载模型\n')
-    
-DEFAULT_TEXT = "网易Confucius4-TTS"
-print(DEFAULT_TEXT)
+
 print("加载模型中，请耐心等待，第一次启动将自动下载模型...")
+
+import huggingface_hub
+try:
+    huggingface_hub.snapshot_download(repo_id='netease-youdao/Confucius4-TTS',local_dir_use_symlinks=False)
+except Exception as e:
+    print("\n下载模型失败===\n")
+    print(e)    
+    print("\n下载模型失败,可能无法正常使用===\n")
+
+DEFAULT_TEXT = "网易Confucius4-TTS"
+
 try:
     import gradio as gr
 except ImportError:

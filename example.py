@@ -16,6 +16,8 @@ import torchaudio
 
 # TODO: drop once pyproject.toml lands and the package is pip-installable.
 sys.path.insert(0, str(Path(__file__).parent))
+import huggingface_hub
+huggingface_hub.snapshot_download(repo_id='netease-youdao/Confucius4-TTS',local_dir_use_symlinks=False)
 
 from confuciustts.cli.inference import ConfuciusTTS
 
